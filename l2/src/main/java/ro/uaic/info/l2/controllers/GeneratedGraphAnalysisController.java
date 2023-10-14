@@ -54,7 +54,7 @@ public class GeneratedGraphAnalysisController extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-    private boolean isInvalidInput(String order) {
-        return order == null || order.isEmpty() || !order.matches("[0-9]+");
+    private boolean isInvalidInput(String input) {
+        return input == null || input.isEmpty() || !input.matches("[0-9]+");
     }
 }
