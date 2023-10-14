@@ -1,0 +1,2 @@
+Add Graph4J library:
+mvn install:install-file -Dfile="C:/Users/YourUserName/Desktop/Java Tehnologies/l2/src/lib/graph4j-1.0.6.jar" -DartifactId=graph4j -Dversion="1.0.6" -DgroupId="org.graph4j" -Dpackaging=jar
