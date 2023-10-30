@@ -1,0 +1,15 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/templates/page.xhtml">
+
+    <ui:define name="content">
+        <p:messages id="messages" for="dataForm" showDetail="false"
+                    autoUpdate="true" closable="true" />
+        <div style="font-size: 24px; font-weight: bold; text-align: center; padding: 10px">
+            <ui:insert name="title"/>
+        </div>
+        <ui:insert name="dataViewContent"/>
+        <ui:insert name="dialogs"/>
+    </ui:define>
+</ui:composition>

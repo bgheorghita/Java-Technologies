@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                                  http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>go-to-students</from-outcome>
+            <to-view-id>/students.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>go-to-projects</from-outcome>
+            <to-view-id>/projects.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>go-to-assigned-projects</from-outcome>
+            <to-view-id>/assigned-projects.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>go-to-calendar-demo</from-outcome>
+            <to-view-id>/basic.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/projects.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/students.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/students.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success-projects</from-outcome>
+            <to-view-id>/projects.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>success-assigned-projects</from-outcome>
+            <to-view-id>/assigned-projects.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/assigned-projects.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/students.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <application>
+        <message-bundle>
+            messages
+        </message-bundle>
+        <resource-bundle>
+            <base-name>messages</base-name>
+            <var>msg</var>
+        </resource-bundle>
+        <locale-config>
+            <default-locale>ro</default-locale>
+            <supported-locale>ro</supported-locale>
+            <supported-locale>en</supported-locale>
+        </locale-config>
+    </application>
+
+
+
+</faces-config>
