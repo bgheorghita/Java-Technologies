@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+    <composite:interface>
+        <composite:attribute name="modifiedAt" required="false"/>
+        <composite:attribute name="modifiedBy" required="false"/>
+    </composite:interface>
+
+    <composite:implementation>
+        <h:form id="edit-form">
+            <p:panelGrid columns="3" styleClass="p-grid" id="edit-dlg-panel">
+                <h:outputLabel for="edit-prj-name" value="#{msg['dlgProjectName']}:"/>
+                <p:inputText id="edit-prj-name" value="#{editProjectView.selectedProject.name}" required="true" requiredMessage="#{msg['prjNameRequired']}" />
+                <p:message for="edit-prj-name"/>
+
+                <h:outputLabel for="edit-prj-category" value="#{msg['dlgProjectCategory']}:"/>
+                <p:selectOneMenu id="edit-prj-category" converter="categoryConverter" value="#{editProjectView.selectedProject.category}" required="true" requiredMessage="#{msg['prjCategoryRequired']}">
+                    <f:selectItems value="#{viewProjectsManagedBean.categories}" var="category" itemLabel="#{category.name}" itemValue="#{category}" />
+                </p:selectOneMenu>
+                <p:message for="edit-prj-category"/>
+
+                <h:outputLabel for="edit-prj-description" value="#{msg['dlgProjectDescription']}:"/>
+                <p:inputTextarea id="edit-prj-description" value="#{editProjectView.selectedProject.description}" required="true" requiredMessage="#{msg['prjDescriptionRequired']}" />
+                <p:message for="edit-prj-description"/>
+
+                <h:outputLabel for="edit-prj-deadline"  value="#{msg['dlgProjectDeadline']}:" />
+                <p:calendar id="edit-prj-deadline" value="#{editProjectView.selectedProject.deadline.time}" pattern="yyyy-MM-dd" showOn="button" required="true" requiredMessage="#{msg['projDeadlineRequired']}" />
+                <p:message for="edit-prj-deadline"/>
+
+                <f:facet name="footer">
+                    <p:commandButton value="#{msg['dlgCancel']}" styleClass="ui-button-flat mr-2" style="width: 6rem" onclick="PF('edit-dlg').hide()"/>
+                    <p:commandButton value="#{msg['dlgSave']}" style="width: 5rem" action="#{editProjectView.updateProject}" update="edit-dlg-panel projectsTable" oncomplete="if (args &amp;&amp; !args.validationFailed) PF('edit-dlg').hide()"  />
+                </f:facet>
+            </p:panelGrid>
+
+            <h:outputLabel for="edit-prj-modifiedBy" value="Last Modified By: " />
+            <h:outputText id="edit-prj-modifiedBy" value="#{cc.attrs.modifiedBy}" />
+            <p:message for="edit-prj-modifiedBy" />
+
+            <h:outputLabel for="edit-prj-modifiedAt" value="Last Modified At: " />
+            <h:outputText id="edit-prj-modifiedAt" value="#{cc.attrs.modifiedAt}">
+                <f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss" timeZone="UTC" />
+            </h:outputText>
+            <p:message for="edit-prj-modifiedAt" />
+        </h:form>
+    </composite:implementation>
+</h:body>
+</html>

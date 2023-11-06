@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view contentType="text/html" encoding="UTF-8">
+    <h:head>
+        <f:facet name="first">
+            <title>
+                #{pageTitle}
+            </title>
+        </f:facet>
+        <h:form>
+            <h:outputText id="lang" value="#{msg['language']}: "/>
+            <h:selectOneMenu value="#{localeBean.language}">
+                <f:selectItem itemValue="en" itemLabel="EN" />
+                <f:selectItem itemValue="ro" itemLabel="RO" />
+                <f:ajax render="lang title projectsTable add-project-btn dlg-project-btn refresh-table-btn form edit-dlg edit-dlg-panel edit-form" />
+            </h:selectOneMenu>
+        </h:form>
+        <h:panelGroup>
+            <ui:include src="/WEB-INF/decorators/menuBar.xhtml" />
+        </h:panelGroup>
+    </h:head>
+    </f:view>
+</html>
