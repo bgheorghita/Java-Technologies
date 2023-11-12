@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<f:view locale="#{localeBean.locale}">
+    <f:loadBundle basename="messages" var="msg" />
+    <ui:composition template="WEB-INF/templates/dataView.xhtml">
+        <ui:define name="dataViewContent">
+            <ui:define name="title">Students</ui:define>
+            <ui:define name="data-title">Students</ui:define>
+            <p:dataTable id="dataTableId" value="#{viewStudentsManagedBean.students}" var="student" lazy="true">
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Student ID"/>
+                    </f:facet>
+                    <h:outputText value="#{student.id}"/>s
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Student Name"/>
+                    </f:facet>
+                    <h:outputText value="#{student.name}"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Preferred Projects"/>
+                    </f:facet>
+                    <p:dataList value="#{student.preferredProjects}" var="project">
+                        #{project.name} (#{project.category.name})<br/>
+                    </p:dataList>
+                </p:column>
+            </p:dataTable>
+        </ui:define>
+    </ui:composition>
+</f:view>
+</html>

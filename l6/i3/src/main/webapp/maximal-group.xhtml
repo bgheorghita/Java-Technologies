@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<f:view locale="#{localeBean.locale}">
+   <f:loadBundle basename="messages" var="msg" />
+   <ui:composition template="WEB-INF/templates/dataView.xhtml">
+      <ui:define name="title">Maximal Group</ui:define>
+      <ui:define name="dataViewContent">
+         <h:form>
+            <p:dataTable id="dataTableId2" value="#{assignedProjectsByCategoryBean.selectedGroup}" var="assignedProject" border="1">
+               <p:column>
+                  <f:facet name="header">
+                     <h:outputText value="Student"/>
+                  </f:facet>
+                  <h:outputText value="#{assignedProject.student.name}"/>
+               </p:column>
+               <p:column>
+                  <f:facet name="header">
+                     <h:outputText value="Project"/>
+                  </f:facet>
+                  <h:outputText value="#{assignedProject.project.name}"/>
+               </p:column>
+               <p:column>
+                  <f:facet name="header">
+                     <h:outputText value="Category"/>
+                  </f:facet>
+                  <h:outputText value="#{assignedProject.project.category.name}"/>
+               </p:column>
+            </p:dataTable>
+            <h:outputText value="Method Invocations: #{assignedProjectsByCategoryBean.methodInvocations}" id="methodInvocations"/>
+            <p:poll interval="5" listener="#{assignedProjectsByCategoryBean.refreshSelectedGroup}" update="dataTableId2 methodInvocations" />
+         </h:form>
+      </ui:define>
+   </ui:composition>
+</f:view>
+</html>

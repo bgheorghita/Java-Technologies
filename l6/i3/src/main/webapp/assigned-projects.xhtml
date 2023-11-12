@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<f:view locale="#{localeBean.locale}">
+    <f:loadBundle basename="messages" var="msg" />
+    <h:head>
+        <title>Students</title>
+    </h:head>
+
+    <h:body>
+        <ui:composition template="WEB-INF/templates/dataView.xhtml">
+            <ui:define name="title">Assigned projects (Maximum Bipartite Matching)</ui:define>
+            <ui:define name="dataViewContent">
+                <p:dataTable id="projectsTable" value="#{assignedProjectsView.assignedProjects}" var="assignedProject">
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Student name"/>
+                        </f:facet>
+                        <h:outputText value="#{assignedProject.student.name}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Project name"/>
+                        </f:facet>
+                        <h:outputText value="#{assignedProject.project.name}"/>
+                    </p:column>
+                </p:dataTable>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</f:view>
+</html>
