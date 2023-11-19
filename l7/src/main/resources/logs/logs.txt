@@ -1,0 +1,6 @@
+[2023-11-19 18:56:22.781][INFO] Entering method: submitPreference
+[2023-11-19 18:56:22.782][INFO] Username: teacher
+[2023-11-19 18:56:22.812][INFO] Exiting method: submitPreference
+[2023-11-19 18:56:28.594][INFO] Entering method: submitPreference
+[2023-11-19 18:56:28.594][INFO] Username: teacher
+[2023-11-19 18:56:28.614][INFO] Exiting method: submitPreference

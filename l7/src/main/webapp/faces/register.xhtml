@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Register Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50vh;
+        }
+
+        .register-panel {
+            width: 300px;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .register-button {
+            text-align: left;
+            margin-top: 10px;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #888;
+        }
+
+        .login-link:hover {
+            color: #007bff;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+</h:head>
+<h:body>
+    <div class="register-panel">
+        <h:form>
+            <div class="form-container">
+                <p:messages id="messages"/>
+
+                <h:outputLabel for="username" value="Username"/>
+                <p:inputText id="username" value="#{registerBean.username}" required="true" placeholder="Username"/>
+
+                <h:outputLabel for="password" value="Password"/>
+                <p:password id="password" value="#{registerBean.password}" required="true" placeholder="Password"/>
+
+                <div class="register-button">
+                    <p:commandButton value="Register" action="#{registerBean.register}" styleClass="ui-button-primary" update="messages"/>
+                </div>
+            </div>
+        </h:form>
+        <h:form>
+            <div style="text-align: center">
+                Already have an account? <h:commandLink action="#{registerBean.login}" styleClass="login-link">Login</h:commandLink>
+            </div>
+        </h:form>
+    </div>
+</h:body>
+</html>
