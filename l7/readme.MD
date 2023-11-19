@@ -2,6 +2,7 @@
 ### Application functionalities:
   ##### An authentication mechanism based on username and password
   ##### A Register mechanism - at registration, users do not have an associated role and they are redirected to the welcome.xhtml page
+  ##### Teachers are redirected to the teacher.xhtml page, and the admins are redirected to the admin.xhtml page. The pages can be seen only if the users have the appropriate roles.
   ##### A time frame is specified in the PreferenceBean, in which teachers can submit preferences
   ##### A teacher user can submit preferences and view them, and an admin user can view all the submited preferences
   ##### Each submission has a uniquely generated registration number (UUID)
