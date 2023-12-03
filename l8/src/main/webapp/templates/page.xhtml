@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title><ui:insert name="title">Title</ui:insert></title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        #navbar {
+            display: flex;
+            justify-content: space-around;
+            background-color: #555;
+            padding: 10px;
+        }
+
+        #navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-end;
+            flex-grow: 1;
+        }
+
+        #navbar li {
+            margin-right: 15px;
+        }
+
+        #navbar a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        #content {
+            padding: 20px;
+        }
+
+        #footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .logout-button {
+            background-color: #d9534f !important;
+            color: #fff !important;
+            border: 1px solid #d43f3a !important;
+            padding: 4px 9px !important;
+            font-weight: bold !important;
+            font-size: 14px !important;
+            cursor: pointer !important;
+        }
+
+        .logout-button:hover {
+            background-color: #d43f3a !important;
+            border: 1px solid #d9534f !important;
+        }
+
+
+    </style>
+</h:head>
+<h:body>
+    <div id="header">
+        <ui:insert name="header">
+            <div id="navbar">
+                <ul>
+                    <li>
+                        <p:commandButton value="Logout" action="#{userSessionBean.logout}" styleClass="logout-button"/>
+                    </li>
+                </ul>
+            </div>
+            <h1>Java Technologies</h1>
+        </ui:insert>
+    </div>
+
+    <div id="content">
+        <ui:insert name="content">
+            <h2>This is the main content area.</h2>
+        </ui:insert>
+    </div>
+
+    <div id="footer">
+        <ui:insert name="footer">
+            <p> &#169;2023. All rights reserved.</p>
+        </ui:insert>
+    </div>
+</h:body>
+</html>

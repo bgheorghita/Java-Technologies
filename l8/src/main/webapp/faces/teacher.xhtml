@@ -1,0 +1,76 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="/templates/page.xhtml">
+
+    <ui:define name="title">Teacher Page</ui:define>
+
+    <ui:define name="content">
+        <h:outputText value="#{userSessionBean.loggedInUsername()} does not have a teacher role. Nothing to show."
+                      rendered="#{not userSessionBean.isTeacher()}"/>
+
+        <div style="margin: auto; width: 50%;">
+            <h:form rendered="#{userSessionBean.isTeacher()}">
+                <p:panelGrid columns="1">
+                    <p:panel header="Preference Submission" id="panel">
+                        <p:messages id="messages"/>
+                        <div class="form-group">
+                            <table style="width: 100%; border: 1px solid #ddd;">
+                                <thead>
+                                <tr>
+                                    <th style="border: 1px solid #ddd; padding: 8px;">Event</th>
+                                    <th style="border: 1px solid #ddd; padding: 8px;">Priority (1 = Highest)</th>
+                                </tr>
+                                </thead>
+                                <ui:repeat value="#{preferenceBean.availableEvents}" var="event">
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center">
+                                            <h:outputLabel for="priority_#{event.id}" value="#{event.name}" />
+                                        </td>
+                                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center">
+                                            <p:selectOneMenu id="priority_#{event.id}" value="#{preferenceBean.eventPriorities[event.id]}" converter="integerConverter">
+                                                <f:selectItems value="#{preferenceBean.availablePriorities}" />
+                                            </p:selectOneMenu>
+                                        </td>
+                                    </tr>
+                                </ui:repeat>
+                                <tr>
+                                    <td style="border: 1px solid #ddd; padding: 8px; text-align: center">
+                                        <label for="content">Preference Content:</label>
+                                    </td>
+                                    <td>
+                                        <p:inputTextarea id="content" value="#{preferenceBean.content}" rows="5" cols="60" autoResize="false" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="form-group">
+                            <p:commandButton value="Submit" action="#{preferenceBean.submitPreference}" styleClass="ui-button-primary" update="messages teacherPreferencesTable"/>
+                        </div>
+                    </p:panel>
+                </p:panelGrid>
+            </h:form>
+        </div>
+
+        <h:form id="teacherPreferencesTable" rendered="#{userSessionBean.isTeacher()}">
+            <p:panelGrid columns="1" style="width: 100%">
+                <p:panel header="Submitted Preferences" style="margin-bottom:10px;">
+                    <p:dataTable value="#{preferenceBean.getPreferencesOfLoggedUser()}" var="preference">
+                        <p:column headerText="Content">
+                            <h:outputText value="#{preference.content}" />
+                        </p:column>
+                        <p:column headerText="Registration Number">
+                            <h:outputText value="#{preference.registrationNumber}" />
+                        </p:column>
+                    </p:dataTable>
+                </p:panel>
+            </p:panelGrid>
+        </h:form>
+    </ui:define>
+</ui:composition>
+
+
+
+
