@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                                  http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+    <navigation-rule>
+        <from-view-id>/faces/auth/login.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>admin-home</from-outcome>
+            <to-view-id>/faces/admin/admin.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>teacher-home</from-outcome>
+            <to-view-id>/faces/teacher/teacher.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>register</from-outcome>
+            <to-view-id>/faces/auth/register.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>welcome</from-outcome>
+            <to-view-id>/faces/welcome.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/faces/auth/register.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>login</from-outcome>
+            <to-view-id>/faces/auth/login.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>welcome</from-outcome>
+            <to-view-id>/faces/welcome.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/faces/welcome.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>/faces/teacher/teacher.xhtml</from-outcome>
+            <to-view-id>/faces/teacher/teacher.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>/faces/admin/admin.xhtml</from-outcome>
+            <to-view-id>/faces/admin/admin.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+
+
+</faces-config>
