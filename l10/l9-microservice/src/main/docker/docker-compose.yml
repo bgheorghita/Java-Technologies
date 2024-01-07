@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  quarkus-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.jvm
+    ports:
+      - "8088:8088"
+    depends_on:
+      - mysql-db
+    environment:
+      - QUARKUS_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/java_technologies_l7
+      - QUARKUS_DATASOURCE_DRIVER=com.mysql.cj.jdbc.Driver
+      - QUARKUS_DATASOURCE_USERNAME=root
+      - QUARKUS_DATASOURCE_PASSWORD=admin
+      - QUARKUS_HTTP_PORT=8088
+      - QUARKUS_HEALTH_EXTENSIONS_ENABLED=false
+      - DATABASE_UP=false
+
+  mysql-db:
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: java_technologies_l7
+      MYSQL_USER: root
+      MYSQL_PASSWORD: admin
+      MYSQL_ROOT_PASSWORD: admin
+    ports:
+      - "3306:3306"
